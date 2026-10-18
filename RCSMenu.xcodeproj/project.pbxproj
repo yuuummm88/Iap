@@ -1,0 +1,37 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+		A10000000000000000000001 /* RCSMenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000011 /* RCSMenuApp.swift */; };
+		A10000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000012 /* ContentView.swift */; };
+		A10000000000000000000003 /* MenuWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000013 /* MenuWebView.swift */; };
+		A10000000000000000000004 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000014 /* index.html */; };
+		A10000000000000000000005 /* MockGameBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000017 /* MockGameBackground.swift */; };
+		A10000000000000000000006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000018 /* Assets.xcassets */; };
+		A10000000000000000000011 /* RCSMenuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCSMenuApp.swift; sourceTree = "<group>"; };
+		A10000000000000000000012 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A10000000000000000000013 /* MenuWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWebView.swift; sourceTree = "<group>"; };
+		A10000000000000000000014 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Resources/index.html; sourceTree = "<group>"; };
+		A10000000000000000000015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A10000000000000000000016 /* RCSMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCSMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000017 /* MockGameBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameBackground.swift; sourceTree = "<group>"; };
+		A10000000000000000000018 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10000000000000000000020 /* RCSMenu */ = {isa = PBXGroup; children = (A10000000000000000000011, A10000000000000000000012, A10000000000000000000013, A10000000000000000000017, A10000000000000000000014, A10000000000000000000018, A10000000000000000000015); path = RCSMenu; sourceTree = "<group>"; };
+		A10000000000000000000021 /* Products */ = {isa = PBXGroup; children = (A10000000000000000000016); name = Products; sourceTree = "<group>"; };
+		A10000000000000000000022 = {isa = PBXGroup; children = (A10000000000000000000020, A10000000000000000000021); sourceTree = "<group>"; };
+		A10000000000000000000030 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000004, A10000000000000000000006); runOnlyForDeploymentPostprocessing = 0; };
+		A10000000000000000000031 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001, A10000000000000000000002, A10000000000000000000003, A10000000000000000000005); runOnlyForDeploymentPostprocessing = 0; };
+		A10000000000000000000040 /* RCSMenu */ = {isa = PBXNativeTarget; buildConfigurationList = A10000000000000000000050; buildPhases = (A10000000000000000000031, A10000000000000000000030); buildRules = (); dependencies = (); name = RCSMenu; productName = RCSMenu; productReference = A10000000000000000000016; productType = "com.apple.product-type.application"; };
+		A10000000000000000000041 /* Project object */ = {isa = PBXProject; attributes = { LastSwiftUpdateCheck = 1500; LastUpgradeCheck = 1500; TargetAttributes = { A10000000000000000000040 = { CreatedOnToolsVersion = 15.0; }; }; }; buildConfigurationList = A10000000000000000000051; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = A10000000000000000000022; productRefGroup = A10000000000000000000021; projectDirPath = ""; projectRoot = ""; targets = (A10000000000000000000040); };
+		A10000000000000000000050 = {isa = XCConfigurationList; buildConfigurations = (A10000000000000000000060, A10000000000000000000061); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A10000000000000000000051 = {isa = XCConfigurationList; buildConfigurations = (A10000000000000000000062, A10000000000000000000063); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A10000000000000000000060 = {isa = XCBuildConfiguration; buildSettings = { ARCHS = arm64; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = RCSMenu/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.rcsmenu; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; }; name = Debug; };
+		A10000000000000000000061 = {isa = XCBuildConfiguration; buildSettings = { ARCHS = arm64; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = RCSMenu/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.rcsmenu; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; }; name = Release; };
+		A10000000000000000000062 = {isa = XCBuildConfiguration; buildSettings = { CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; }; name = Debug; };
+		A10000000000000000000063 = {isa = XCBuildConfiguration; buildSettings = { CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; }; name = Release; };
+	};
+	rootObject = A10000000000000000000041 /* Project object */;
+}

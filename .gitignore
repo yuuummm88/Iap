@@ -1,0 +1,33 @@
+# Xcode build output and per-user settings
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+
+# Exported app packages and logs
+*.ipa
+*.xcarchive
+*.log
+
+# Signing material and secrets
+*.p12
+*.p8
+*.cer
+*.mobileprovision
+*.provisionprofile
+*.pem
+*.key
+.env
+.env.*
+
+# Do not include legacy/game artifacts or the local transfer archive
+OriginalIPA/
+ExtractedIPA/
+Package/
+Framework/
+Sources/
+Build/
+RCSMenu-macOS-transfer.zip
+BUILD-CHECK-REPORT.md
+BUILD-IPA.md
+BUILD-ON-MAC.md

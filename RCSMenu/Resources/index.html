@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RCS Menu</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: #151b29; color: white; font-family: Arial, sans-serif; }
+.menu { width: min(95%, 390px); margin: max(25px, env(safe-area-inset-top)) auto 25px; background: #090d17; border: 2px solid #00c8ff; border-radius: 14px; overflow: hidden; }
+.header { padding: 18px; text-align: center; font-size: 21px; font-weight: bold; border-bottom: 2px solid #00c8ff; }
+.content { padding: 12px; }
+.item { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
+.item label { flex: 1; padding: 13px 5px; text-align: center; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+.blue { background: #009bd4; border-radius: 5px; }
+input[type=checkbox] { appearance: none; width: 47px; height: 26px; flex-shrink: 0; background: #293244; border-radius: 30px; cursor: pointer; position: relative; }
+input[type=checkbox]:before { content: ""; position: absolute; width: 20px; height: 20px; top: 3px; left: 3px; background: white; border-radius: 50%; transition: .2s; }
+input:checked[type=checkbox] { background: #00bfea; }
+input:checked[type=checkbox]:before { transform: translateX(21px); }
+input[type=checkbox]:focus-visible, .scope button:focus-visible, input[type=range]:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.scope { display: flex; justify-content: space-around; margin: 10px 0 15px; }
+.scope button { background: #182334; border: 0; color: white; padding: 9px; border-radius: 4px; cursor: pointer; }
+.scope button.active { background: #009bd4; }
+input[type=range] { width: 100%; accent-color: #00c8ff; cursor: pointer; }
+.footer { border-top: 1px solid #00c8ff; padding: 14px; color: #00d8ff; text-align: center; }
+</style>
+</head>
+<body>
+<main class="menu" aria-label="RCS Menu UI settings">
+  <div class="header">⚡ RCS MENU ⚡</div>
+  <div class="content" id="items"></div>
+  <div class="footer">● RCS UI DEMO | SETTINGS ONLY</div>
+</main>
+<script>
+const names = ["MASTER (1-CLICK)", "AIMLOCK 100%", "AIM SMOOTH", "NO RECOIL 95%", "NO RECOIL 100%", "FAST PARACHUTE", "WALL HACK", "UG FULL", "AUTO SCOPE HOLO", "AKM 1-HIT", "FAST RELOAD", "NO FALL DAMAGE", "DESERT EAGLE RPG", "SPEED 7.5X", "HIGH SCOPE 8X"];
+const root = document.getElementById("items");
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem("rcsUI") || "{}"); if (!saved || typeof saved !== "object" || Array.isArray(saved)) saved = {}; } catch { saved = {}; }
+const save = () => localStorage.setItem("rcsUI", JSON.stringify(saved));
+const blue = new Set([0, 8, 9, 10, 11, 12, 13, 14]);
+const toggles = [];
+let masterToggle;
+function updateMasterToggle() { const features = toggles.slice(1); const selected = features.filter(toggle => toggle.checked).length; masterToggle.checked = selected === features.length; masterToggle.indeterminate = selected > 0 && selected < features.length; saved[0] = masterToggle.checked; save(); }
+names.forEach((name, i) => {
+  const row = document.createElement("div"); row.className = "item";
+  const toggle = document.createElement("input"); toggle.type = "checkbox"; toggle.id = `feature-${i}`; toggle.checked = !!saved[i]; toggles.push(toggle); if (i === 0) masterToggle = toggle;
+  toggle.addEventListener("change", () => { if (i === 0) toggles.slice(1).forEach((feature, index) => { feature.checked = toggle.checked; saved[index + 1] = toggle.checked; }); saved[i] = toggle.checked; save(); if (i !== 0) updateMasterToggle(); });
+  const label = document.createElement("label"); label.htmlFor = toggle.id; label.textContent = name; if (blue.has(i)) label.className = "blue";
+  row.append(toggle, label); root.append(row);
+  if (i === 8) { const scopes = document.createElement("div"); scopes.className = "scope"; ["HOLO", "2X", "4X", "8X"].forEach(value => { const button = document.createElement("button"); button.type = "button"; button.textContent = value; const selected = (saved.scope || "HOLO") === value; button.classList.toggle("active", selected); button.setAttribute("aria-pressed", String(selected)); button.onclick = () => { saved.scope = value; save(); scopes.querySelectorAll("button").forEach(b => { const active = b === button; b.classList.toggle("active", active); b.setAttribute("aria-pressed", String(active)); }); }; scopes.append(button); }); root.append(scopes); }
+  if (i === 13) { const slider = document.createElement("input"); slider.type = "range"; slider.min = 1; slider.max = 20; slider.step = .5; const restored = Number(saved.speed); slider.value = Number.isFinite(restored) && restored >= 1 && restored <= 20 ? restored : 7.5; label.textContent = `SPEED ${slider.value}X`; slider.oninput = () => { label.textContent = `SPEED ${slider.value}X`; saved.speed = slider.value; save(); }; root.append(slider); }
+});
+updateMasterToggle();
+</script>
+</body>
+</html>
