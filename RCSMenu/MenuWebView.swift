@@ -10,7 +10,11 @@ struct MenuWebView: UIViewRepresentable {
         webView.isOpaque = false
         webView.backgroundColor = UIColor(red: 21/255, green: 27/255, blue: 41/255, alpha: 1)
         webView.scrollView.backgroundColor = webView.backgroundColor
-        webView.scrollView.bounces = false
+        webView.scrollView.alwaysBounceVertical = true
+        webView.scrollView.bounces = true
+        webView.scrollView.decelerationRate = .normal
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.scrollView.showsVerticalScrollIndicator = true
         webView.allowsBackForwardNavigationGestures = false
 
         guard let page = Bundle.main.url(forResource: "index", withExtension: "html") else {
